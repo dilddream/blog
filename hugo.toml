@@ -10,9 +10,9 @@ title = 'My-Blog'
 # theme
 theme = 'ananke'
 
-# taxonomies
+[taxonomies]
 category = "categories"
 tag = "tags"
 
-# permalinks
+[permalinks]
 posts = "/:slug/"
