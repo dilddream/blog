@@ -1,0 +1,18 @@
+# URL
+baseURL = 'https://example.org/'
+
+# language / region
+languageCode = 'ko-kr'
+
+# title
+title = 'My-Blog'
+
+# theme
+theme = 'ananke'
+
+# taxonomies
+category = "categories"
+tag = "tags"
+
+# permalinks
+posts = "/:slug/"
