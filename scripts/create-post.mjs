@@ -40,7 +40,6 @@ async function main() {
   // 기존 플레이스홀더 치환
   .replace(/{{\s*\.number\s*}}/g, String(nextNumber))
   .replace(/{{\s*\.title\s*}}/g, rawTitle)
-  // date: 줄도 실제 오늘 날짜로 바꿔 줌
   .replace(/^date:.*$/m, `date: "${today}"`);
 
   // 5) index.md 생성
