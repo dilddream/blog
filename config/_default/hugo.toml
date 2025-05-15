@@ -111,6 +111,10 @@ enableRobotsTXT = true
     url = "/interest"
     weight = 20
 
+[permalinks]
+    blog = ":/slug"
+
+    
 [languages]
   [languages.en]
     languageName = "English"
