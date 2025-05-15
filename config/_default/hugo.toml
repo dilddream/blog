@@ -121,8 +121,3 @@ enableRobotsTXT = true
     weight = 10
     [languages.en.params.jsonResume]
       present = "present"
-  [languages.ko]
-    languageName = "Korean"
-    weight = 20
-    [languages.de.params.jsonResume]
-      present = "hangul"

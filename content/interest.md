@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Interest"
 draft: false
 type: "interest"
 ---
