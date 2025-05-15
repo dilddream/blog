@@ -1,6 +1,6 @@
 baseURL = "http://localhost"
-copyright = "Copyright © 2021"
-title = "hugo-theme-gruvbox"
+copyright = "Copyright © 2025"
+title = "몽중몽상"
 #paginate = 10
 enableRobotsTXT = true
 # Enable to calculate the last modified date from Git history and show it in the post header
@@ -37,17 +37,20 @@ enableRobotsTXT = true
     isPlainText = true
     notAlternative = true
 
+
 [params]
   # dark or light, defaults to light. Local storage and OS preference override this param. For more details see: 
   # https://github.com/schnerring/hugo-theme-gruvbox/issues/34#issuecomment-1235870375
   #defaultTheme = "light"
+
   # gray red green yellow blue purple aqua orange, defaults to blue
   #themeColor = "blue"
+
   # soft medium hard, defaults to medium
   #themeContrast = "medium"
-  author = "Michael Schnerring"
-  subtitle = "Theme Demo"
-  description = "A retro-looking Hugo theme inspired by gruvbox. The pastel colors are high contrast, easily distinguishable, pleasing to the eye, and feature light and dark color palettes."
+  author = "몽중몽상"
+  subtitle = "dilddream"
+  description = "몽중몽상의 블로그"
 
   [params.logo]
     text = "Blog"
@@ -90,50 +93,7 @@ enableRobotsTXT = true
   #   - {url} placeholder for post .Permalink
   #   - {title} placeholder for post .Title
   # See  https://github.com/bradvin/social-share-urls for more format strings
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "facebook"
-    formatString = "https://www.facebook.com/sharer.php?u={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "reddit"
-    formatString = "https://reddit.com/submit?url={url}&title={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "x"
-    formatString = "https://x.com/intent/post?url={url}&text={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "linkedin"
-    formatString = "https://www.linkedin.com/sharing/share-offsite/?url={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "whatsapp"
-    formatString = "whatsapp://send/?text={title}%20{url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "tumblr"
-    formatString = "https://www.tumblr.com/widgets/share/tool?canonicalUrl={url}&title={title}&caption={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "pinterest"
-    formatString = "http://pinterest.com/pin/create/button/?url={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "ycombinator"
-    formatString = "https://news.ycombinator.com/submitlink?u={url}&t={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "vk"
-    formatString = "http://vk.com/share.php?url={url}&title={title}&comment={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "xing"
-    formatString = "https://www.xing.com/spi/shares/new?url={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "telegram"
-    formatString = "https://telegram.me/share/url?url={url}&text={title}"
+
   [[params.socialShare]]
     iconSuite = "tabler-icon"
     iconName = "outline/mail"
