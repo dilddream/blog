@@ -112,9 +112,9 @@ enableRobotsTXT = true
     weight = 20
 
 [permalinks]
-    blog = ":/slug"
+    blog = "/:slug"
 
-    
+
 [languages]
   [languages.en]
     languageName = "English"
