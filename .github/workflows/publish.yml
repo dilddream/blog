@@ -33,6 +33,10 @@ jobs:
 
       - name: Install npm Packages
         run: npm install
+      - name : Configure Git User
+        run: |
+          git config --global user.name "dilddream"
+          git config --global user.email "dilddream31@gmail.com"
 
       - name: Display Changes
         run: git status
@@ -81,6 +85,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: hugo-theme-gruvbox
+          projectName: blog
           directory: ./public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
