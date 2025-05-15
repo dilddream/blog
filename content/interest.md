@@ -1,7 +1,7 @@
 ---
 title: ""
 draft: false
-type: "cv"
+type: "interest"
 ---
 
 ## Interest
