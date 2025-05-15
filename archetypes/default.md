@@ -5,6 +5,6 @@ draft: true
 comments: false
 socialShare: true
 toc: false
-cover:
-  src: cover.png
+#cover:
+#  src: cover.png
 ---
