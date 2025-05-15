@@ -95,7 +95,8 @@
     "lint:css": "stylelint --fix **/*.css",
     "lint:js": "eslint --fix .",
     "lint:md": "markdownlint --fix **/*.md",
-    "prepare": "husky"
+    "prepare": "husky",
+    "new-post": "scripts/create-post.mjs"
   },
   "version": "1.0.0"
 }

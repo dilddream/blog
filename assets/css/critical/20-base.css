@@ -1,7 +1,51 @@
+/* Font Import */
+@font-face {
+  font-family: "ChosunSm";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.1/ChosunSm.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chosunm";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sogang";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SOGANGUNIVERSITYTTF.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maruburi";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot);
+  src:
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot?#iefix)
+      format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2)
+      format("woff2"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.ttf)
+      format("truetype");
+}
+
 :root {
   --font-monospace: "Fira Code", "Lucida Console", Monaco, monospace;
   --font-sans-serif: Verdana, Helvetica, sans-serif;
-  --font-serif: "Roboto Slab", Georgia, serif;
+  --font-serif: "Noto Serif KR", "Noto Sans KR", system-ui, sans-serif;
+
+  --font-logo: "Sogang", "ChosunSm", "Noto Serif KR", system-ui;
+
+  --font-post-header: "Maruburi", "Sogang", system-ui;
+  --font-post: "Chosunm", "Noto Serif KR", system-ui, sans-serif;
 }
 
 html {
@@ -60,8 +104,8 @@ h4,
 h5,
 h6 {
   color: var(--fg0);
-  font-family: var(--font-monospace);
-  font-weight: 300;
+  font-family: var(--font-post-header);
+  font-weight: 100;
   line-height: 1.4;
 
   & code {
@@ -83,11 +127,12 @@ h2 {
 }
 
 h1 {
-  font-size: 1.875rem;
+  font-size: 2.375rem;
+  font-family: var(--font-serif);
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 2.375rem;
 }
 
 h3 {
@@ -100,7 +145,7 @@ h3 {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.375rem;
   }
 
   h3 {

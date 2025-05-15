@@ -1,7 +1,8 @@
 ---
 number: 0
 slug: "1"
-title: "2025-05-15 | 무너지기"
+title: "안녕하세요. 반갑습니다."
+date: "2025-05-13"
 categories: ["일기"]
 
 
@@ -20,3 +21,5 @@ comments: false
 #  alt: ""
 #  caption: ""
 ---
+
+본문.

@@ -2,6 +2,7 @@
 number: 0
 slug: "{{ .number }}"
 title: "{{ .Date }} | {{ .title }}"
+date: "{{ .Date }}"
 categories: ["일기"]
 
 

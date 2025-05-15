@@ -48,6 +48,9 @@ aside.toc {
   }
 }
 
+.jr-basics__name {
+  font-family: var(--font-serif);
+}
 .jr-basics__image {
   background: var(--bg1);
   border: 2px solid var(--bg2);
