@@ -1,0 +1,63 @@
+{
+  "name": "hugo-theme-gruvbox",
+  "version": "1.0.0",
+  "description": "A retro-looking Hugo theme inspired by gruvbox. The pastel colors are high contrast, easily distinguishable, pleasing to the eye, and feature light and dark color palettes.",
+  "author": {
+    "name": "Michael Schnerring",
+    "email": "3743342+schnerring@users.noreply.github.com",
+    "url": "https://schnerring.net"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/schnerring/hugo-theme-gruvbox#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schnerring/hugo-theme-gruvbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/schnerring/hugo-theme-gruvbox/issues"
+  },
+  "keywords": ["hugo", "gruvbox", "theme"],
+  "scripts": {
+    "lint:css": "stylelint --fix **/*.css",
+    "lint:js": "eslint --fix .",
+    "lint:md": "markdownlint --fix **/*.md",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:md",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix --allow-empty-input",
+    "*.md": "markdownlint --fix"
+  },
+  "dependencies": {
+    "@tabler/icons": "^3.31.0",
+    "flexsearch": "0.7.43",
+    "normalize.css": "^8.0.1",
+    "prism-themes": "^1.9.0",
+    "prismjs": "^1.29.0",
+    "typeface-fira-code": "^1.1.13",
+    "typeface-roboto-slab": "^1.1.13"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "cssnano": "^7.0.6",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "markdownlint-cli": "^0.44.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-custom-media": "^11.0.5",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.1",
+    "postcss-preset-env": "^10.1.2",
+    "postcss-url": "^10.1.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-go-template": "^0.0.15",
+    "stylelint": "^16.13.1",
+    "stylelint-prettier": "^5.0.2"
+  }
+}

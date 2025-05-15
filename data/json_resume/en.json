@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+
+
+  
+  "basics": {
+    "name": "dilddream",
+    "label": "Univ Student",
+    "image": "https://i.imgur.com/SovqijZ.jpeg",
+    "email": "dilddream31@gmail.com",
+    "summary": "물고기 낚기",
+    "location": {
+      "city": "Seoul, Korea"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "Github",
+        "url": "https://github.com/dilddream"
+      }
+    ]
+  },
+
+
+  "interests": [
+    {
+      "name": "Music",
+      "keywords": ["Classical", "Neo-psychadelia", "Post-rock"]
+    }
+  ]
+}
