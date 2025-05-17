@@ -1,39 +1,48 @@
+{{/* layouts/partials/widget-categories.html */}}
+{{ $ctx     := .Page }}
+{{ $cats    := .Cats }}
+{{ $exclude := .Exclude }}
+
 <details class="widget widget--categories" open>
-
-  
-  {{ $cats    := .Cats }}
-  {{ $exclude := .Exclude }}
-
-  <summary class="widget__header">
-    카테고리
-  </summary>
+  <summary class="widget__header">카테고리</summary>
   <ul class="widget__list">
+
+    {{/* ─── 전체보기: 전체 포스트 최신글로 링크 ───────────────────────── */}}
+    {{ $allPages   := sort $ctx.Site.RegularPages "Date" "desc" }}
+    {{ $latestAll  := index $allPages 0 }}
     <li class="widget__item widget__item--all">
-      {{ $ctx     := .Page }}
-      <a href="{{ "/" | relLangURL }}" class="widget__link">
-        전체보기 ({{ len $ctx.Site.RegularPages }})
+      <a href="{{ $latestAll.RelPermalink }}" class="widget__link">
+        전체보기 ({{ len $allPages }})
       </a>
     </li>
-    
+
+    {{/* ─── 각 카테고리별 최신글로 링크 ─────────────────────────────── */}}
     {{ range $name, $taxonomy := $cats }}
       {{ if not (in $exclude $name) }}
+        {{ $pages := $taxonomy.Pages }}
+        {{ $sorted := sort $pages "Date" "desc" }}
+        {{ $latest := index $sorted 0 }}
         <li class="widget__item">
-            <a href="{{ (printf "/categories/%s/" $name | urlize) | relLangURL }}"
-            class="widget__link">
-            {{ $name }} ({{ $taxonomy.Count }})
-            </a>
+          <a href="{{ $latest.RelPermalink }}" class="widget__link">
+            {{ $name }} ({{ len $pages }})
+          </a>
         </li>
       {{ end }}
     {{ end }}
+
     <li class="widget__separator"></li>
 
-    <!-- 예시: “일기”만 따로 빼서 맨 아래로 -->
+    {{/* ─── “일기” 카테고리만 별도 처리 ─────────────────────────────── */}}
     {{ with index $cats "일기" }}
+      {{ $pages := .Pages }}
+      {{ $sorted := sort $pages "Date" "desc" }}
+      {{ $latest := index $sorted 0 }}
       <li class="widget__item widget__item--diary">
-        <a href="{{ "/categories/일기/" | relLangURL }}" class="widget__link">
-          일기 ({{ .Count }})
+        <a href="{{ $latest.RelPermalink }}" class="widget__link">
+          일기 ({{ len $pages }})
         </a>
       </li>
     {{ end }}
+
   </ul>
 </details>

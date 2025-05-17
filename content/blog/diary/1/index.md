@@ -1,6 +1,6 @@
 ---
 number: 0
-slug: "2"
+slug: "1"
 title: "2025-05-17 | 무너지기"
 date: "2025-05-17"
 categories: ["일기"]
