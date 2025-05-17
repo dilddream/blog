@@ -1,0 +1,70 @@
+:root {
+  --color-border: #ddd; /* 기본 테두리 색상 */
+  --color-text: #333;
+}
+
+.widget--categories {
+  font-family: var(--font-serif);
+  line-height: 1.6; /* (선택) 가독성을 위해 */
+}
+
+/* 위젯 전체 박스 */
+.widget--categories {
+  display: block;
+  margin: 1.5rem 0;
+  border: 2px solid var(--bg2);
+  background-color: var(--bg1);
+  overflow: hidden;
+}
+
+/* 헤더(summary) 스타일 */
+.widget--categories > summary.widget__header {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: var(--bg0);
+  color: var(--color-text);
+  list-style: none; /* 브라우저 기본 화살표 숨기기 */
+  position: relative;
+}
+/* 커스텀 화살표 */
+.widget--categories > summary.widget__header::after {
+  content: "▾";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+/* 열린 상태 화살표 회전 */
+.widget--categories[open] > summary.widget__header::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* 리스트 영역 */
+.widget__list {
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+/* 각 항목 */
+.widget__item {
+  padding: 0.5rem 1rem;
+}
+.widget__link {
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+  width: 100%;
+}
+
+/* 구분선 (li 자체를 separator로 사용) */
+.widget__separator {
+  height: 1px;
+  margin: 0.5rem 0;
+  background-color: var(--bg2);
+  padding: 0;
+  list-style: none;
+}

@@ -1,0 +1,39 @@
+<details class="widget widget--categories" open>
+
+  
+  {{ $cats    := .Cats }}
+  {{ $exclude := .Exclude }}
+
+  <summary class="widget__header">
+    카테고리
+  </summary>
+  <ul class="widget__list">
+    <li class="widget__item widget__item--all">
+      {{ $ctx     := .Page }}
+      <a href="{{ "/" | relLangURL }}" class="widget__link">
+        전체보기 ({{ len $ctx.Site.RegularPages }})
+      </a>
+    </li>
+    
+    {{ range $name, $taxonomy := $cats }}
+      {{ if not (in $exclude $name) }}
+        <li class="widget__item">
+            <a href="{{ (printf "/categories/%s/" $name | urlize) | relLangURL }}"
+            class="widget__link">
+            {{ $name }} ({{ $taxonomy.Count }})
+            </a>
+        </li>
+      {{ end }}
+    {{ end }}
+    <li class="widget__separator"></li>
+
+    <!-- 예시: “일기”만 따로 빼서 맨 아래로 -->
+    {{ with index $cats "일기" }}
+      <li class="widget__item widget__item--diary">
+        <a href="{{ "/categories/일기/" | relLangURL }}" class="widget__link">
+          일기 ({{ .Count }})
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</details>
