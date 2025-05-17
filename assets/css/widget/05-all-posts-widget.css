@@ -1,0 +1,106 @@
+.widget--all-posts {
+  font-family: var(--font-serif);
+  color: var(--fg);
+  line-height: 1.6;
+
+  display: block;
+  margin: 1.5rem 0;
+  border: 2px solid var(--bg2);
+
+  background-color: var(--bg1);
+  overflow: hidden;
+}
+
+/* 헤더 (summary)*/
+.widget--all-posts > summary.widget__header {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+  background-color: var(--bg0);
+  list-style: none;
+}
+/* 커스텀 화살표 */
+.widget--all-posts > summary.widget__header::after {
+  content: "▾";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+/* 열린 상태 화살표 회전 */
+.widget--all-posts[open] > summary.widget__header::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.widget--all-posts .widget__header-all {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: normal;
+  font-size: 0.875rem;
+  color: var(--color-link);
+}
+
+.widget--all-posts .widget__list {
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.widget--all-posts .widget__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.widget--all-posts .widget__link {
+  flex: 1 1 auto;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+.widget--all-posts .widget__date {
+  flex: 0 0 auto;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.widget--all-posts .widget__pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.widget--all-posts .widget__link--btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-link);
+}
+
+.widget--all-posts .widget__link--top {
+  margin-left: auto;
+}
+
+/* collapsed/expanded */
+.widget--all-posts .collapsed {
+  display: none;
+}
+.widget--all-posts .expanded {
+  display: block;
+}
+.widget--all-posts[open] .collapsed {
+  display: none;
+}
+.widget--all-posts[open] .expanded {
+  display: block;
+}

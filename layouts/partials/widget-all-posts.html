@@ -1,0 +1,54 @@
+{{ $ctx := . }}
+
+{{/* 카테고리명 결정(첫 번째 또는 전체) */}}
+{{ $category := index $ctx.Params.categories 0 | default "" }}
+
+{{/* 글 목록 컬렉션: 전체 또는 카테고리별 */}}
+{{ $pages := cond (eq $category "") $ctx.Site.RegularPages (index $ctx.Site.Taxonomies.categories $category).Pages }}
+{{ $sorted := sort $pages "Date" "desc" }}
+
+<details class="widget widget--all-posts" open>
+  <summary class="widget__header">{{ if eq $category "" }}전체{{ else }}<span class="widget__header-category">{{ $category }}</span>{{ end }} 글 목록
+  </summary>
+  <ul class="widget__list" id="post-list">
+    {{ range $idx, $item := $sorted }}
+      <li class="widget__item post-item" data-index="{{ $idx }}">
+        <a href="{{ .RelPermalink }}" class="widget__link">{{ .Title }}</a>
+        <time class="widget__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006. 1. 2." }}</time>
+      </li>
+    {{ end }}
+  </ul>
+  <nav class="widget__pagination">
+    <button type="button" id="prev-btn" class="widget__link widget__link--btn">◀</button>
+    <button type="button" id="next-btn" class="widget__link widget__link--btn">▶</button>
+  </nav>
+</details>
+
+<script>
+(() => {
+  const items = Array.from(document.querySelectorAll('#post-list .post-item'));
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const toggleBtn = document.getElementById('toggle-btn');
+  const perPage = 5;
+  let page = 0;
+  let expanded = false;
+
+  function render() {
+    const start = page * perPage;
+    const endCount = expanded ? perPage * 2 : perPage;
+    items.forEach((el, idx) => {
+      el.style.display = (idx >= start && idx < start + endCount) ? 'flex' : 'none';
+    });
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = (page + 1) * perPage >= items.length;
+    toggleBtn.textContent = expanded ? '접기' : '더보기';
+  }
+
+  prevBtn.addEventListener('click', () => { if(page > 0){ page--; render(); }});
+  nextBtn.addEventListener('click', () => { if((page + 1)*perPage < items.length){ page++; render(); }});
+  toggleBtn.addEventListener('click', () => { expanded = !expanded; render(); });
+
+  render();
+})();
+</script>

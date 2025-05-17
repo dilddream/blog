@@ -2,13 +2,11 @@
   font-family: var(--font-serif);
   color: var(--fg);
   line-height: 1.6; /* (선택) 가독성을 위해 */
-}
 
-/* 위젯 전체 박스 */
-.widget--categories {
   display: block;
   margin: 1.5rem 0;
   border: 2px solid var(--bg2);
+
   background-color: var(--bg1);
   overflow: hidden;
 }
@@ -19,9 +17,9 @@
   padding: 0.75rem 1rem;
   font-weight: bold;
   font-size: 1rem;
+  position: relative;
   background-color: var(--bg0);
   list-style: none; /* 브라우저 기본 화살표 숨기기 */
-  position: relative;
 }
 /* 커스텀 화살표 */
 .widget--categories > summary.widget__header::after {

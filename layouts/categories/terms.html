@@ -1,0 +1,25 @@
+<!-- layouts/categories/terms.html -->
+{{ define "main" }}
+  {{ $ctx := . }}
+  {{/* 전체/카테고리 글 컬렉션 */}}
+  {{ $pages := cond (eq $ctx.Kind "taxonomy") .Pages .Site.RegularPages }}
+  {{/* Hugo 내장 pagination */}}
+  {{ $paginator := .Paginate (sort $pages "Date" "desc") 5 }}
+
+  <aside class="sidebar">
+    <!-- 기존 카테고리 위젯 -->
+    {{ partial "widget-categories.html" (dict "Page" . "Cats" .Site.Taxonomies.categories "Exclude" (slice "일기")) }}
+    <!-- 이제 리스트 위젯은 여기서 호출 -->
+    {{ partial "widget-all-posts.html" (dict "Page" . "Paginator" $paginator) }}
+  </aside>
+
+  <section class="posts">
+    {{ range $paginator.Pages }}
+      <!-- 포스트 요약/타이틀 렌더링 -->
+    {{ end }}
+    <nav class="pagination">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">이전</a>{{ end }}
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">다음</a>{{ end }}
+    </nav>
+  </section>
+{{ end }}

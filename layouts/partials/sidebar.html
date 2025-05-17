@@ -24,7 +24,7 @@
   {{ end }}
 
 
-  {{ $styles := resources.Get "css/non-critical/25-widget.css" | minify | fingerprint }}
+  {{ $styles := resources.Get "css/widget/00-categories-widget.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}">
   {{ $cats := .Site.Taxonomies.categories }}
   {{ $exclude := slice "일기" }}
