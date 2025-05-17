@@ -105,11 +105,6 @@ enableRobotsTXT = true
     name = "Blog"
     url = "/blog"
     weight = 10
-  [[menu.main]]
-    identifier = "interest"
-    name = "Interest"
-    url = "/interest"
-    weight = 20
 
 [permalinks]
     blog = "/:slug"
