@@ -1,7 +1,7 @@
 {{ define "main" }}
 
   <article class="widget">
-    {{ $styles := resources.Get "css/widget/05-all-posts-widget.css" | minify | fingerprint }}
+    {{ $styles := resources.Get "assets/css/widget/05-all-posts-widget.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}">
     {{ partial "widget-all-posts.html" . }}
   </article>
