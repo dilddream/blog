@@ -24,11 +24,6 @@
   {{ end }}
 
 
-  {{ $styles := resources.Get "css/widget/00-categories-widget.css" 
-   | resources.Minify 
-   | resources.Fingerprint }}
-  {{ $styles = $styles | resources.Minify | resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}">
   {{ $cats := .Site.Taxonomies.categories }}
   {{ $exclude := slice "일기" }}
   {{ partial "widget-categories.html" (dict

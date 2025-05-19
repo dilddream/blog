@@ -1,10 +1,6 @@
 {{ define "main" }}
 
   <article class="widget">
-    {{ $styles := resources.Get "css/widget/05-all-posts-widget.css" 
-   | resources.Minify 
-   | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}">
     {{ partial "widget-all-posts.html" . }}
   </article>
   

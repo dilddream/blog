@@ -11,8 +11,8 @@
     {{ with $.Site.Params.Logo.Text }}
       <div class="logo__text">{{ . }}</div>
     {{ end }}
-    <div class="logo__chevron">></div>
-    <div class="logo__cursor">█</div>
+    <div class="logo__chevron"></div>
+    <div class="logo__cursor"></div>
   </a>
 
   <div class="search">
@@ -59,4 +59,6 @@
   <button class="theme__toggle dark--hidden" aria-label="Toggle dark mode">
     {{ partial "icons/tabler-icon.html" "outline/moon" }}
   </button>
+
+  
 </header>
