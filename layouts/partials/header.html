@@ -43,9 +43,9 @@
 
 
       <ul class="menu--vertical">
-        {{ range $.Site.Menus.main }}
+        {{ range $name, $taxonomy := site.Taxonomies.categories }}
           <li>
-            <a class="menu__item" href="{{ .URL }}">{{ .Name }}</a>
+            <a class="menu__item" href="{{ $taxonomy.Page.Permalink }}">{{ $name }} ({{ len $taxonomy }})</a>
           </li>
         {{ end }}
       </ul>
