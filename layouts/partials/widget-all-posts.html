@@ -29,7 +29,6 @@
   const items = Array.from(document.querySelectorAll('#post-list .post-item'));
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
-  const toggleBtn = document.getElementById('toggle-btn');
   const perPage = 5;
   let page = 0;
   let expanded = false;
@@ -42,12 +41,10 @@
     });
     prevBtn.disabled = page === 0;
     nextBtn.disabled = (page + 1) * perPage >= items.length;
-    toggleBtn.textContent = expanded ? '접기' : '더보기';
   }
 
   prevBtn.addEventListener('click', () => { if(page > 0){ page--; render(); }});
   nextBtn.addEventListener('click', () => { if((page + 1)*perPage < items.length){ page++; render(); }});
-  toggleBtn.addEventListener('click', () => { expanded = !expanded; render(); });
 
   render();
 })();
