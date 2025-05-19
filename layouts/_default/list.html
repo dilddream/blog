@@ -1,9 +1,7 @@
 {{ define "main" }}
-  <div class="content-section">
-    <h1>{{ .Title | markdownify }}</h1>
-    {{ with .Content }}
-      <div>{{ . }}</div>
-    {{ end }}
+  <div class="container">
+    <!-- 전체 글 위젯 (강제로 cat="" 설정) -->
+    {{ .Scratch.Set "forceAll" true }}
+    {{ partial "widget-all-posts.html" . }}
   </div>
-  {{ partial "post-list.html" .Paginator }}
 {{ end }}

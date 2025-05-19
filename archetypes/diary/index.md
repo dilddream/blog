@@ -4,7 +4,7 @@ slug: "{{ .number }}"
 title: "{{ .Date }} | {{ .title }}"
 date: "{{ .Date }}"
 categories: ["일기"]
-
+types: ["blog"]
 
 # 1. 초안 여부: true면 hugo server에만 노출, 실제 빌드 시 제외
 draft: true

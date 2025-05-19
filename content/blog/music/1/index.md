@@ -1,9 +1,10 @@
 ---
 number: 0
-slug: "13"
+slug: "1"
 title: "A"
 date: "2025-05-19"
 categories: ["음악"]
+types: ["blog"]
 
 # 0. metadata
 name: ""

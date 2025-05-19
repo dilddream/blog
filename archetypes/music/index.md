@@ -4,6 +4,7 @@ slug: "{{ .number }}"
 title: "{{ .title }}"
 date: "{{ .Date }}"
 categories: ["음악"]
+types: ["blog"]
 
 # 0. metadata
 name: ""

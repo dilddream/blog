@@ -25,11 +25,9 @@
 
 
   {{ $cats := .Site.Taxonomies.categories }}
-  {{ $exclude := slice "일기" }}
   {{ partial "widget-categories.html" (dict
       "Page"    .
       "Cats"    $cats
-      "Exclude" $exclude
   ) }}
 
 

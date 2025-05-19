@@ -4,6 +4,7 @@ slug: "9"
 title: "A"
 date: "2025-05-19"
 categories: ["음악"]
+types: ["blog"]
 
 # 0. metadata
 name: ""

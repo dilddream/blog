@@ -4,6 +4,7 @@ slug: "{{ .number }}"
 title: "{{ .title }}"
 date: "{{ .Date }}"
 categories: ["영화"]
+types: ["blog"]
 
 # 0. metadata
 name: ""

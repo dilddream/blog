@@ -1,7 +1,5 @@
-{{/* layouts/partials/widget-categories.html */}}
 {{ $ctx := .Page }}
 {{ $cats := .Cats }}
-{{ $exclude := .Exclude }}
 
 {{/* ─── 0. 현재 카테고리 결정 ───────────────────────── */}}
 {{ $currentCat := "" }}
@@ -11,6 +9,8 @@
   {{ $currentCat = (index $ctx.Params.categories 0 | default "") }}
 {{ end }}
 
+
+
 <details class="widget widget--categories" open>
   <summary class="widget__header">카테고리</summary>
   <ul class="widget__list">
@@ -18,23 +18,23 @@
     {{/* ─── 전체보기: 전체 포스트 최신글로 링크 ───────────────────────── */}}
     {{ $allPages  := sort $ctx.Site.RegularPages "Date" "desc" }}
     {{ $latestAll := index $allPages 0 }}
+    {{/* ─── 전체보기: blog 페이지로 링크 ───────────────────────── */}}
     <li class="widget__item widget__item--all">
-      {{ if eq $currentCat "" }}
+    {{ if eq $ctx.RelPermalink "/types/blog/" }}
         <strong>
-          <a href="{{ $latestAll.RelPermalink }}" class="widget__link">
+        <a href="/types/blog/" class="widget__link">
             전체보기 ({{ len $allPages }})
-          </a>
-        </strong>
-      {{ else }}
-        <a href="{{ $latestAll.RelPermalink }}" class="widget__link">
-          전체보기 ({{ len $allPages }})
         </a>
-      {{ end }}
+        </strong>
+    {{ else }}
+        <a href="/types/blog/" class="widget__link">
+        전체보기 ({{ len $allPages }})
+        </a>
+    {{ end }}
     </li>
 
     {{/* ─── 각 카테고리별 최신글로 링크 ─────────────────────────────── */}}
     {{ range $name, $taxonomy := $cats }}
-      {{ if not (in $exclude $name) }}
         {{ $pages  := $taxonomy.Pages }}
         {{ $sorted := sort $pages "Date" "desc" }}
         {{ $latest := index $sorted 0 }}
@@ -52,29 +52,6 @@
           {{ end }}
         </li>
       {{ end }}
-    {{ end }}
-
-    <li class="widget__separator"></li>
-
-    {{/* ─── “일기” 카테고리만 별도 처리 ─────────────────────────────── */}}
-    {{ with index $cats "일기" }}
-      {{ $pages  := .Pages }}
-      {{ $sorted := sort $pages "Date" "desc" }}
-      {{ $latest := index $sorted 0 }}
-      <li class="widget__item widget__item--diary">
-        {{ if eq $currentCat "일기" }}
-          <strong>
-            <a href="{{ $latest.RelPermalink }}" class="widget__link">
-              일기 ({{ len $pages }})
-            </a>
-          </strong>
-        {{ else }}
-          <a href="{{ $latest.RelPermalink }}" class="widget__link">
-            일기 ({{ len $pages }})
-          </a>
-        {{ end }}
-      </li>
-    {{ end }}
 
   </ul>
 </details>
