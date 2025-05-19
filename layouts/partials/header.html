@@ -44,8 +44,11 @@
 
       <ul class="menu--vertical">
         {{ range $name, $taxonomy := site.Taxonomies.categories }}
+        {{ $pages  := $taxonomy.Pages }}
+        {{ $sorted := sort $pages "Date" "desc" }}
+        {{ $latest := index $sorted 0 }}
           <li>
-            <a class="menu__item" href="{{ $taxonomy.Page.Permalink }}">{{ $name }} ({{ len $taxonomy }})</a>
+            <a class="menu__item" href="{{ $latest.RelPermalink }}">{{ $name }} ({{ len $pages }})</a>
           </li>
         {{ end }}
       </ul>
