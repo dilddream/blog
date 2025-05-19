@@ -27,13 +27,6 @@
   </div>
 
   <nav id="menu">
-    <ul class="menu--horizontal">
-      {{ range $.Site.Menus.main }}
-        <li class="menu__item">
-          <a href="{{ .URL }}">{{ .Name }}</a>
-        </li>
-      {{ end }}
-    </ul>
 
     <div class="menu__burger">
       <!-- Invisible checkbox indicating menu state -->
