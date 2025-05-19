@@ -74,15 +74,8 @@
 
 
 <script>
-  (function() {
+    
   document.addEventListener("DOMContentLoaded", () => {
-    const widgets = document.querySelectorAll(".widget-all-posts");
-
-    setTimeout(() => {
-        widgets.forEach(widget => {
-          widget.classList.add('loaded');
-        });
-      }, 100);
     // 전체 글 목록 모드 확인 (types/blog 페이지 또는 localStorage 상태)
     const isTypeBlog = window.location.pathname === "/types/blog/";
     
@@ -234,5 +227,4 @@
       });
     });
   });
-})();
 </script>
