@@ -94,10 +94,13 @@
 
 /* 페이지 버튼 컨테이너 */
 .widget-page-buttons {
+  all: unset;
   display: flex;
   gap: 0.25rem; /* 버튼 사이 간격 */
 }
 .widget-page-btn {
+  all:unset;
+  appearance: none;
   display: inline-block; /* flex 대신 inline-block 쓰셔도 됩니다 */
   text-align: center;
   height: 2rem; /* 버튼 높이 */
