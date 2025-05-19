@@ -17,7 +17,7 @@ country: []
 rating: 0
 
 # 1. 초안 여부: true면 hugo server에만 노출, 실제 빌드 시 제외
-draft: true
+draft: false
 
 # 2. 태그 (optional)
 tags: []
