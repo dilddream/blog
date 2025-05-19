@@ -1,11 +1,5 @@
 /* 컨테이너 */
 .widget-all-posts {
-  visibility: hidden;
-  transition:
-    visibility 0s,
-    opacity 0.3s;
-  opacity: 0;
-
   font-family: var(--font-serif);
   color: var(--fg);
   line-height: 1.6; /* (선택) 가독성을 위해 */
@@ -16,10 +10,6 @@
 
   background-color: var(--bg1);
   overflow: hidden;
-}
-.widget-all-posts.loaded {
-  visibility: visible;
-  opacity: 1;
 }
 
 /* 헤더 */
