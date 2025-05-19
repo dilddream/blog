@@ -41,11 +41,11 @@
   --font-monospace: "Fira Code", "Lucida Console", Monaco, monospace;
   --font-sans-serif: Verdana, Helvetica, sans-serif;
   --font-serif: "Noto Serif KR", "Noto Sans KR", system-ui, sans-serif;
-
   --font-logo: "Sogang", "ChosunSm", "Noto Serif KR", system-ui;
-
   --font-post-header: "Maruburi", "Sogang", system-ui;
   --font-post: "Chosunm", "Noto Serif KR", system-ui, sans-serif;
+
+  --color-border: var(--bg2);
 }
 
 html {

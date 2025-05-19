@@ -1,7 +1,8 @@
-.widget--all-posts {
+/* 컨테이너 */
+.widget-all-posts {
   font-family: var(--font-serif);
   color: var(--fg);
-  line-height: 1.6;
+  line-height: 1.6; /* (선택) 가독성을 위해 */
 
   display: block;
   margin: 1.5rem 0;
@@ -11,8 +12,8 @@
   overflow: hidden;
 }
 
-/* 헤더 (summary)*/
-.widget--all-posts > summary.widget__header {
+/* 헤더 */
+.widget-all-posts > summary.widget__header {
   cursor: pointer;
   padding: 0.75rem 1rem;
   font-weight: bold;
@@ -21,8 +22,8 @@
   background-color: var(--bg0);
   list-style: none;
 }
-/* 커스텀 화살표 */
-.widget--all-posts > summary.widget__header::after {
+/* 커스텀 화살표 (▾ / ▴) */
+.widget-all-posts > summary.widget__header::after {
   content: "▾";
   position: absolute;
   right: 1rem;
@@ -30,77 +31,93 @@
   transform: translateY(-50%);
   transition: transform 0.2s;
 }
-/* 열린 상태 화살표 회전 */
-.widget--all-posts[open] > summary.widget__header::after {
+.widget-all-posts[open] > summary.widget__header::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-.widget--all-posts .widget__header-all {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: normal;
-  font-size: 0.875rem;
-  color: var(--color-link);
-}
-
-.widget--all-posts .widget__list {
+/* 리스트 */
+.widget-post-list {
   margin: 0;
-  padding: 0.5rem 0;
+  padding: 0 0;
   list-style: none;
 }
 
-.widget--all-posts .widget__item {
+/* ── 리스트 항목(li) ───────────────────────────────────────── */
+/* li는 current 배경만 담당, padding은 a에 옮깁니다 */
+.widget-post-item.current {
+  background-color: var(--bg2);
+}
+
+/* ── 링크(a) ───────────────────────────────────────────────── */
+/* a를 flex 컨테이너로 만들어 제목과 날짜를 양 끝 정렬 */
+.widget-post-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
-}
 
-.widget--all-posts .widget__link {
-  flex: 1 1 auto;
-  margin-right: 1rem;
+  /* li 대신 a에 padding을 줘서 클릭 영역을 넓힘 */
+  padding: 0.5rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+
   text-decoration: none;
   color: var(--color-link);
 }
 
-.widget--all-posts .widget__date {
-  flex: 0 0 auto;
+/* 제목(span)에 flex:1을 줘서 남은 공간을 차지하게 */
+.widget-post-title {
+  flex: 1;
+}
+/* 날짜(time)는 자동으로 오른쪽 끝으로 밀리도록 */
+.widget-post-link time {
+  margin-left: auto;
   font-size: 0.875rem;
   color: var(--color-muted);
   white-space: nowrap;
 }
 
-.widget--all-posts .widget__pagination {
+/* 컨트롤 */
+.widget-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0.5rem 1rem;
   border-top: 1px solid var(--color-border);
 }
-
-.widget--all-posts .widget__link--btn {
+.widget-group-prev,
+.widget-group-next {
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color-link);
 }
 
-.widget--all-posts .widget__link--top {
-  margin-left: auto;
+/* 페이지 버튼 컨테이너 */
+.widget-page-buttons {
+  display: flex;
+  gap: 0.25rem; /* 버튼 사이 간격 */
+}
+.widget-page-btn {
+  display: inline-block; /* flex 대신 inline-block 쓰셔도 됩니다 */
+  text-align: center;
+  height: 2rem; /* 버튼 높이 */
+  padding: 0 0.75rem; /* 수평 여백만 줌 */
+  cursor: pointer;
+
+  border: none;
+  border-radius: 0.375rem;
+
+  background-color: var(--bg1);
+  color: var(--fg);
+
+  font-size: 0.875rem;
 }
 
-/* collapsed/expanded */
-.widget--all-posts .collapsed {
-  display: none;
+/* 호버/액티브 상태 */
+.widget-page-btn:hover {
+  background-color: var(--bg2);
 }
-.widget--all-posts .expanded {
-  display: block;
-}
-.widget--all-posts[open] .collapsed {
-  display: none;
-}
-.widget--all-posts[open] .expanded {
-  display: block;
+.widget-page-btn.active {
+  background-color: var(--bg2);
+  font-weight: bold;
 }

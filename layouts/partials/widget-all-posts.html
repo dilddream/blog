@@ -1,51 +1,160 @@
+{{/* layouts/partials/widget-all-posts.html */}}
 {{ $ctx := . }}
+{{ $cat := cond $ctx.IsNode $ctx.Title (index $ctx.Params.categories 0 | default "") }}
+{{- $pages  := cond (eq $cat "") $ctx.Site.RegularPages (index $ctx.Site.Taxonomies.categories $cat).Pages -}}
+{{- $sorted := sort $pages "Date" "desc" -}}
+{{ $data := slice }}
+{{ range $sorted }}
+  {{ $data = $data | append (dict
+       "title" .Title
+       "link"  .RelPermalink
+       "date"  (.Date.Format "2006-01-02")
+     ) }}
+{{ end }}
 
-{{/* 카테고리명 결정(첫 번째 또는 전체) */}}
-{{ $category := index $ctx.Params.categories 0 | default "" }}
+<nav class="widget">
 
-{{/* 글 목록 컬렉션: 전체 또는 카테고리별 */}}
-{{ $pages := cond (eq $category "") $ctx.Site.RegularPages (index $ctx.Site.Taxonomies.categories $category).Pages }}
-{{ $sorted := sort $pages "Date" "desc" }}
+  <!-- ① JSON 데이터 스크립트 -->
+  <script type="application/json" class="widget-data">
+    {{- $data | jsonify | safeJS -}}
+  </script>
 
-<details class="widget widget--all-posts" open>
-  <summary class="widget__header">{{ if eq $category "" }}전체{{ else }}<span class="widget__header-category">{{ $category }}</span>{{ end }} 글 목록
-  </summary>
-  <ul class="widget__list" id="post-list">
-    {{ range $idx, $item := $sorted }}
-      <li class="widget__item post-item" data-index="{{ $idx }}">
-        <a href="{{ .RelPermalink }}" class="widget__link">{{ .Title }}</a>
-        <time class="widget__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006. 1. 2." }}</time>
-      </li>
-    {{ end }}
-  </ul>
-  <nav class="widget__pagination">
-    <button type="button" id="prev-btn" class="widget__link widget__link--btn">◀</button>
-    <button type="button" id="next-btn" class="widget__link widget__link--btn">▶</button>
-  </nav>
-</details>
+  <!-- ② 위젯 마크업 -->
+  <details class="widget-all-posts" data-category="{{ $cat }}" open>
+    <summary class="widget__header">{{ $cat }} 글 목록</summary>
+    <ul class="widget-post-list">
+      {{ range first 5 $sorted }}
+        <li class="widget-post-item">
+          <a href="{{ .RelPermalink }}" class="widget-post-link">
+           <span class="widget-post-title">{{ .Title }}</span>
+           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006. 1. 2." }}</time>
+         </a>
+        </li>
+      {{ end }}
+    </ul>
+    <div class="widget-controls">
+      <button type="button" class="widget-group-prev">◀</button>
+      <span class="widget-page-buttons"></span>
+      <button type="button" class="widget-group-next">▶</button>
+    </div>
+  </details>
+
+</nav>
+
 
 <script>
-(() => {
-  const items = Array.from(document.querySelectorAll('#post-list .post-item'));
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const perPage = 5;
-  let page = 0;
-  let expanded = false;
+  document.addEventListener("DOMContentLoaded", () => {
+    // container 하나씩 순회
+    document.querySelectorAll(".widget").forEach(container => {
+      // 컨테이너 내부의 데이터 스크립트
+      const dataEl = container.querySelector("script.widget-data");
+      const allData = JSON.parse(dataEl.textContent || "[]");
 
-  function render() {
-    const start = page * perPage;
-    const endCount = expanded ? perPage * 2 : perPage;
-    items.forEach((el, idx) => {
-      el.style.display = (idx >= start && idx < start + endCount) ? 'flex' : 'none';
+      // 컨테이너 내부의 details 위젯
+      const widget      = container.querySelector("details.widget-all-posts");
+      const listEl      = widget.querySelector(".widget-post-list");
+      const btnPrevGrp  = widget.querySelector(".widget-group-prev");
+      const btnNextGrp  = widget.querySelector(".widget-group-next");
+      const btnContainer= widget.querySelector(".widget-page-buttons");
+
+      const perPage     = 5;
+      const grpSize     = 5;
+      const total       = allData.length;
+      const totalPages  = Math.ceil(total / perPage);
+      // ─── 변경된 부분: 현재 페이지 인덱스 계산 ─────────────────────────
+      // 1) 현재 URL path 얻기 (예: "/blog/2025/05/17/hello/")
+      const currentPath = window.location.pathname;
+      // 2) allData에서 현재 글의 link와 일치하는 항목 찾기
+      const idx = allData.findIndex(item => item.link === currentPath);
+      // 3) 찾았으면 Math.floor(index/perPage), 못 찾았으면 0
+      let current = idx >= 0
+        ? Math.floor(idx / perPage)
+        : 0;
+    // ────────────────────────────────────────────────────────────────
+
+
+      function renderPosts() {
+        listEl.innerHTML = "";
+        const start = current * perPage;
+        const end   = Math.min(start + perPage, total);
+        for (let i = start; i < end; i++) {
+          const { title, link, date } = allData[i];
+          const li = document.createElement("li");
+          li.className = "widget-post-item" 
+            + (link === currentPath ? " current" : "");
+            
+          li.innerHTML = `
+            <a href="${link}" class="widget-post-link">
+              <span class="widget-post-title">${title}</span>
+              <time datetime="${date}">${date.replace(/-/g, ". ")}</time>
+            </a>
+          `;
+          listEl.appendChild(li);
+        }
+      }
+
+      function renderPageButtons() {
+        btnContainer.innerHTML = "";
+
+        const grp       = Math.floor(current / grpSize);
+        const startPage = grp * grpSize + 1;
+        const endPage   = Math.min(startPage + grpSize - 1, totalPages);
+
+        // ◀▶ 숨김/표시
+        const prevHidden = grp === 0;
+        const nextHidden = endPage === totalPages;
+        btnPrevGrp.style.display = prevHidden ? 'none' : '';
+        btnNextGrp.style.display = nextHidden ? 'none' : '';
+
+        // ✔ 위젯 컨트롤에 no-arrows 클래스 토글
+        const controls = widget.querySelector('.widget-controls');
+        if (prevHidden && nextHidden) {
+          controls.classList.add('no-arrows');
+        } else {
+          controls.classList.remove('no-arrows');
+        }
+
+        // 페이지 번호 버튼 생성
+        for (let p = startPage; p <= endPage; p++) {
+          const btn = document.createElement("button");
+          btn.type        = "button";
+          btn.textContent = p;
+          btn.dataset.page= p - 1;
+          btn.className   = (p - 1 === current)
+            ? "widget-page-btn active"
+            : "widget-page-btn";
+          btnContainer.appendChild(btn);
+        }
+      }
+
+
+      btnPrevGrp.addEventListener("click", () => {
+        const grp = Math.floor(current / grpSize);
+        if (grp > 0) {
+          current = (grp - 1) * grpSize;
+          renderAll();
+        }
+      });
+      btnNextGrp.addEventListener("click", () => {
+        const grp = Math.floor(current / grpSize);
+        if ((grp + 1) * grpSize < totalPages) {
+          current = (grp + 1) * grpSize;
+          renderAll();
+        }
+      });
+      btnContainer.addEventListener("click", e => {
+        if (e.target.tagName === "BUTTON") {
+          current = Number(e.target.dataset.page);
+          renderAll();
+        }
+      });
+
+      function renderAll() {
+        renderPosts();
+        renderPageButtons();
+      }
+
+      renderAll();
     });
-    prevBtn.disabled = page === 0;
-    nextBtn.disabled = (page + 1) * perPage >= items.length;
-  }
-
-  prevBtn.addEventListener('click', () => { if(page > 0){ page--; render(); }});
-  nextBtn.addEventListener('click', () => { if((page + 1)*perPage < items.length){ page++; render(); }});
-
-  render();
-})();
-</script>
+  });
+  </script>
