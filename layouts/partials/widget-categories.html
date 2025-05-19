@@ -41,12 +41,12 @@
         <li class="widget__item">
           {{ if eq $name $currentCat }}
             <strong>
-              <a href="{{ $latest.RelPermalink }}" class="widget__link">
+              <a href="{{ $latest.RelPermalink }}" class="widget__link" onclick="localStorage.removeItem('viewAllMode'); return true;">
                 {{ $name }} ({{ len $pages }})
               </a>
             </strong>
           {{ else }}
-            <a href="{{ $latest.RelPermalink }}" class="widget__link">
+            <a href="{{ $latest.RelPermalink }}" class="widget__link" onclick="localStorage.removeItem('viewAllMode'); return true;">
               {{ $name }} ({{ len $pages }})
             </a>
           {{ end }}
