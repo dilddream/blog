@@ -102,4 +102,5 @@
 .widget-page-btn:focus {
   background-color: var(--bg2);
   font-weight: bold;
+  outline: none;
 }

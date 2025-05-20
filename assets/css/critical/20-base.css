@@ -201,6 +201,7 @@ button {
   -moz-appearance: none;
   appearance: none;
 
+  outline: none;
   display: inline-block; /* flex 대신 inline-block 쓰셔도 됩니다 */
   text-align: center;
   height: 2rem; /* 버튼 높이 */
