@@ -125,6 +125,9 @@
             : "widget-page-btn";
           btnContainer.appendChild(btn);
         }
+
+         const activeBtn = btnContainer.querySelector('.widget-page-btn.active');
+        if (activeBtn) activeBtn.focus();
       }
 
 

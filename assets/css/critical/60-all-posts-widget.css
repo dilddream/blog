@@ -99,9 +99,8 @@
   gap: 0.25rem; /* 버튼 사이 간격 */
 }
 
-/* purgecss start ignore */
-.widget-page-btn.active {
+.widget-page-btn:focus {
   background-color: var(--bg2);
   font-weight: bold;
+  outline: none;
 }
-/* purgecss end ignore */
