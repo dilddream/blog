@@ -3,17 +3,6 @@
 [hugoVersion]
   extended = true
   min = "0.128.0"
-[[imports]]
-  path = "github.com/schnerring/hugo-mod-json-resume"
-  [[imports.mounts]]
-    source = "data"
-    target = "data"
-  [[imports.mounts]]
-    source = "layouts"
-    target = "layouts"
-  [[imports.mounts]]
-    source = "assets/css/json-resume.css"
-    target = "assets/css/critical/44-json-resume.css"
 [[mounts]]
   # required by hugo-mod-json-resume
   source = "node_modules/simple-icons/icons"
