@@ -14,7 +14,6 @@
       "normalize.css": "project",
       "prism-themes": "project",
       "prismjs": "project",
-      "simple-icons": "github.com/schnerring/hugo-mod-json-resume",
       "typeface-fira-code": "project",
       "typeface-roboto-slab": "project"
     },
@@ -46,7 +45,6 @@
     "normalize.css": "^8.0.1",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
-    "simple-icons": "^14.13.0",
     "typeface-fira-code": "^1.1.13",
     "typeface-roboto-slab": "^1.1.13"
   },
