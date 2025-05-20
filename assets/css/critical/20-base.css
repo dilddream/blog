@@ -182,7 +182,7 @@ td {
 hr {
   border: none;
   background: var(--bg1);
-  height: 1px;
+  height: 1.75px;
   margin: 3rem auto;
   width: 80%;
 }

@@ -50,7 +50,7 @@ enableRobotsTXT = true
   #themeContrast = "medium"
   author = "몽중몽상"
   subtitle = "dilddream"
-  description = "몽중몽상의 블로그"
+  description = ""
 
   [params.logo]
     text = "몽중몽상"

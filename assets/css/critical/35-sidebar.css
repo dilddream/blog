@@ -48,28 +48,9 @@ aside.toc {
   }
 }
 
-.jr-basics__name {
-  font-family: var(--font-serif);
-}
-.jr-basics__image {
-  background: var(--bg1);
+aside.bio {
   border: 2px solid var(--bg2);
-}
-
-.jr-basics__summary {
-  color: var(--fg3);
-  font-family: var(--font-serif);
-  margin: 0.75rem 0;
-}
-
-.jr-basics__profile {
-  & a:hover {
-    color: var(--fg3);
-
-    & svg {
-      fill: var(--fg3);
-    }
-  }
+  padding: 2rem 2.5rem;
 }
 
 .tag-cloud {

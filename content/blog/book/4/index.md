@@ -1,17 +1,19 @@
 ---
 number: 0
-slug: "1"
-title: "Sample 1"
+slug: "4"
+title: "Sample 4"
 date: "2025-05-20"
-categories: ["음악"]
+categories: ["독서"]
 types: ["blog"]
 
 # 0. metadata
 name: ""
-artist: []
+author: []
+original_year: 0
+publisher: ""
 year: 0
-track: 0
-length_second: 0
+edition: ""
+pages: 0
 genres: []
 country: []
 rating: 0

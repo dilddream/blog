@@ -1,19 +1,16 @@
 ---
 number: 0
-slug: "1"
-title: "Sample 1"
+slug: "6"
+title: "Sample 6"
 date: "2025-05-20"
-categories: ["음악"]
+categories: ["게임"]
 types: ["blog"]
 
 # 0. metadata
 name: ""
-artist: []
+developer: []
 year: 0
-track: 0
-length_second: 0
 genres: []
-country: []
 rating: 0
 
 # 1. 초안 여부: true면 hugo server에만 노출, 실제 빌드 시 제외

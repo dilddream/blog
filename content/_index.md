@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "home"
 draft: false
-type: "Home"
+type: "home"
 ---

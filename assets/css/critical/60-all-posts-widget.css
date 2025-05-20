@@ -72,7 +72,6 @@
 }
 /* 날짜(time)는 자동으로 오른쪽 끝으로 밀리도록 */
 .widget-post-link time {
-  margin-left: auto;
   font-size: 0.875rem;
   color: var(--color-muted);
   white-space: nowrap;
