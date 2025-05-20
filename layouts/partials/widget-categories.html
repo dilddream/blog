@@ -15,24 +15,6 @@
   <summary class="widget__header">카테고리</summary>
   <ul class="widget__list">
 
-    {{/* ─── 전체보기: 전체 포스트 최신글로 링크 ───────────────────────── */}}
-    {{ $allPages  := sort $ctx.Site.RegularPages "Date" "desc" }}
-    {{ $latestAll := index $allPages 0 }}
-    {{/* ─── 전체보기: blog 페이지로 링크 ───────────────────────── */}}
-    <li class="widget__item widget__item--all">
-    {{ if eq $ctx.RelPermalink "/types/blog/" }}
-        <strong>
-        <a href="/types/blog/" class="widget__link">
-            전체보기 ({{ len $allPages }})
-        </a>
-        </strong>
-    {{ else }}
-        <a href="/types/blog/" class="widget__link">
-        전체보기 ({{ len $allPages }})
-        </a>
-    {{ end }}
-    </li>
-
     {{/* ─── 각 카테고리별 최신글로 링크 ─────────────────────────────── */}}
     {{ range $name, $taxonomy := $cats }}
         {{ $pages  := $taxonomy.Pages }}
@@ -41,12 +23,12 @@
         <li class="widget__item">
           {{ if eq $name $currentCat }}
             <strong>
-              <a href="{{ $latest.RelPermalink }}" class="widget__link" onclick="localStorage.removeItem('viewAllMode'); return true;">
+              <a href="{{ $latest.RelPermalink }}" class="widget__link">
                 {{ $name }} ({{ len $pages }})
               </a>
             </strong>
           {{ else }}
-            <a href="{{ $latest.RelPermalink }}" class="widget__link" onclick="localStorage.removeItem('viewAllMode'); return true;">
+            <a href="{{ $latest.RelPermalink }}" class="widget__link">
               {{ $name }} ({{ len $pages }})
             </a>
           {{ end }}

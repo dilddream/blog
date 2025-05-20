@@ -1,13 +1,6 @@
-
+{{/* layouts/partials/widget-all-posts.html */}}
 {{ $ctx := . }}
-
-{{/* types/blog 페이지인지 확인 */}}
-{{ $isTypeBlog := eq $ctx.RelPermalink "/types/blog/" }}
-
-{{/* 현재 페이지 정보 */}}
-{{ $cat := cond $isTypeBlog "" (cond $ctx.IsNode $ctx.Title (index $ctx.Params.categories 0 | default "")) }}
-
-{{/* cat=""(전체 글) 또는 특정 카테고리 글 선택 */}}
+{{ $cat := cond $ctx.IsNode $ctx.Title (index $ctx.Params.categories 0 | default "") }}
 {{- $pages  := cond (eq $cat "") $ctx.Site.RegularPages (index $ctx.Site.Taxonomies.categories $cat).Pages -}}
 {{- $sorted := sort $pages "Date" "desc" -}}
 {{ $data := slice }}
@@ -19,17 +12,7 @@
      ) }}
 {{ end }}
 
-
 <nav class="widget">
-
-  <script>
-    (function() {
-      const viewAllMode = localStorage.getItem('viewAllMode') === 'true';
-      if (viewAllMode) {
-        document.currentScript.parentNode.dataset.viewAll = 'true';
-      }
-    })();
-  </script>
 
   <!-- ① JSON 데이터 스크립트 -->
   <script type="application/json" class="widget-data">
@@ -37,10 +20,8 @@
   </script>
 
   <!-- ② 위젯 마크업 -->
-  <details class="widget-all-posts" data-category="{{ $cat }}" data-view="{{ cond $isTypeBlog "all" "category" }}" open>
-    <summary class="widget__header">
-      {{ if eq $cat "" }}전체{{ else }}{{ $cat }}{{ end }} 글 목록
-    </summary>
+  <details class="widget-all-posts" data-category="{{ $cat }}" open>
+    <summary class="widget__header">{{ $cat }} 글 목록</summary>
     <ul class="widget-post-list">
       {{ range first 5 $sorted }}
         <li class="widget-post-item">
@@ -62,31 +43,7 @@
 
 
 <script>
-  // 더 빠른 초기화를 위해 즉시 실행
-  (function() {
-    const isTypeBlog = window.location.pathname === "/types/blog/";
-    if (isTypeBlog) {
-      localStorage.setItem('viewAllMode', 'true');
-    }
-  })();
-</script>
-
-
-
-<script>
-    
   document.addEventListener("DOMContentLoaded", () => {
-    // 전체 글 목록 모드 확인 (types/blog 페이지 또는 localStorage 상태)
-    const isTypeBlog = window.location.pathname === "/types/blog/";
-    
-    // types/blog 페이지라면 localStorage에 상태 저장
-    if (isTypeBlog) {
-      localStorage.setItem('viewAllMode', 'true');
-    }
-    
-    // localStorage에서 viewAllMode 상태 확인
-    const viewAllMode = localStorage.getItem('viewAllMode') === 'true';
-    
     // container 하나씩 순회
     document.querySelectorAll(".widget").forEach(container => {
       // 컨테이너 내부의 데이터 스크립트
@@ -99,17 +56,6 @@
       const btnPrevGrp  = widget.querySelector(".widget-group-prev");
       const btnNextGrp  = widget.querySelector(".widget-group-next");
       const btnContainer= widget.querySelector(".widget-page-buttons");
-      
-      // viewAllMode일 경우 위젯 설정 변경
-      if (viewAllMode) {
-        // 위젯 카테고리 속성 비우기
-        widget.dataset.category = "";
-        widget.dataset.view = "all";
-        
-        // 위젯 제목 변경
-        const summaryEl = widget.querySelector(".widget__header");
-        summaryEl.textContent = "전체 글 목록";
-      }
 
       const perPage     = 5;
       const grpSize     = 5;
@@ -124,6 +70,8 @@
       let current = idx >= 0
         ? Math.floor(idx / perPage)
         : 0;
+    // ────────────────────────────────────────────────────────────────
+
 
       function renderPosts() {
         listEl.innerHTML = "";
@@ -135,22 +83,12 @@
           li.className = "widget-post-item" 
             + (link === currentPath ? " current" : "");
             
-          // viewAllMode 상태를 유지하기 위한 onclick 속성 추가
-          if (viewAllMode) {
-            li.innerHTML = `
-              <a href="${link}" class="widget-post-link" onclick="localStorage.setItem('viewAllMode', 'true'); return true;">
-                <span class="widget-post-title">${title}</span>
-                <time datetime="${date}">${date.replace(/-/g, ". ")}</time>
-              </a>
-            `;
-          } else {
-            li.innerHTML = `
-              <a href="${link}" class="widget-post-link">
-                <span class="widget-post-title">${title}</span>
-                <time datetime="${date}">${date.replace(/-/g, ". ")}</time>
-              </a>
-            `;
-          }
+          li.innerHTML = `
+            <a href="${link}" class="widget-post-link">
+              <span class="widget-post-title">${title}</span>
+              <time datetime="${date}">${date.replace(/-/g, ". ")}</time>
+            </a>
+          `;
           listEl.appendChild(li);
         }
       }
@@ -189,6 +127,7 @@
         }
       }
 
+
       btnPrevGrp.addEventListener("click", () => {
         const grp = Math.floor(current / grpSize);
         if (grp > 0) {
@@ -213,18 +152,9 @@
       function renderAll() {
         renderPosts();
         renderPageButtons();
-
-        widget.classList.add('loaded');
       }
 
       renderAll();
     });
-    
-    // 카테고리 위젯에서 전체보기가 아닌 항목 클릭 시 localStorage 지우기
-    document.querySelectorAll(".widget--categories .widget__item:not(.widget__item--all) a").forEach(link => {
-      link.addEventListener('click', () => {
-        localStorage.removeItem('viewAllMode');
-      });
-    });
   });
-</script>
+  </script>
