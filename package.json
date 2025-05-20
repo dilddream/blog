@@ -1,11 +1,11 @@
 {
   "author": {
-    "email": "3743342+schnerring@users.noreply.github.com",
-    "name": "Michael Schnerring",
-    "url": "https://schnerring.net"
+    "email": "dilddream31@gmail.com",
+    "name": "dilddream",
+    "url": "https://dilddream.com"
   },
   "bugs": {
-    "url": "https://github.com/schnerring/hugo-theme-gruvbox/issues"
+    "url": "https://github.com/dilddream/blog/issues"
   },
   "comments": {
     "dependencies": {
@@ -48,7 +48,7 @@
     "typeface-fira-code": "^1.1.13",
     "typeface-roboto-slab": "^1.1.13"
   },
-  "description": "A retro-looking Hugo theme inspired by gruvbox. The pastel colors are high contrast, easily distinguishable, pleasing to the eye, and feature light and dark color palettes.",
+  "description": "블로그",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "cssnano": "^7.0.6",
@@ -70,7 +70,7 @@
     "stylelint": "^16.13.1",
     "stylelint-prettier": "^5.0.2"
   },
-  "homepage": "https://github.com/schnerring/hugo-theme-gruvbox#readme",
+  "homepage": "https://dilddream.com",
   "keywords": [
     "hugo",
     "gruvbox",
@@ -83,10 +83,10 @@
     "*.md": "markdownlint --fix"
   },
   "main": "index.js",
-  "name": "hugo-theme-gruvbox",
+  "name": "몽중몽상",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/schnerring/hugo-theme-gruvbox.git"
+    "url": "git+https://github.com/dilddream/blog.git"
   },
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js && npm run lint:md",
@@ -95,5 +95,5 @@
     "lint:md": "markdownlint --fix **/*.md",
     "prepare": "husky"
   },
-  "version": "1.0.0"
+  "version": "0.1.0"
 }
