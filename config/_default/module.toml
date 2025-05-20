@@ -3,6 +3,14 @@
 [hugoVersion]
   extended = true
   min = "0.128.0"
+[[imports]]
+  path = "github.com/dilddream/hugo-mod-json-resume"
+[[imports.mounts]]
+    source = "data"
+    target = "data"
+[[imports.mounts]]
+    source = "layouts"
+    target = "layouts"
 [[mounts]]
   # required by hugo-mod-json-resume
   source = "node_modules/simple-icons/icons"
@@ -10,12 +18,6 @@
 [[mounts]]
   source = "assets"
   target = "assets"
-[[mounts]]
-  source = "data"
-  target = "data"
-[[mounts]]
-  source = "layouts"
-  target = "layouts"
 [[mounts]]
   source = "static"
   target = "static"
