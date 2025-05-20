@@ -216,11 +216,11 @@ button {
   font-size: 0.875rem;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background-color: var(--bg2);
 }
-button:active {
-  background-color: var(--bg2);
+button:focus {
   font-weight: bold;
 }
 
