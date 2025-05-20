@@ -1,9 +1,9 @@
 name = "Gruvbox"
 license = "MIT"
-licenselink = "https://github.com/schnerring/hugo-theme-gruvbox/blob/main/LICENSE"
-description = "A retro-looking Hugo theme inspired by the gruvbox. The pastel colors are high contrast, easily distinguishable, pleasing to the eye, and feature light and dark color palettes."
-homepage = "https://github.com/schnerring/hugo-theme-gruvbox"
-demosite = "https://hugo-theme-gruvbox.schnerring.net"
+licenselink = "https://github.com/dilddream/blog/blob/main/LICENSE"
+description = "A custom-theme based on the hugo-gruvbox-theme by schnerring"
+homepage = "https://github.com/dilddream/blog"
+demosite = "https://dilddream.com"
 tags = [
   "blog",
   "dark mode",
@@ -14,5 +14,5 @@ tags = [
 features = ["dark mode"]
 
 [author]
-  name = "Michael Schnerring"
-  homepage = "https://schnerring.net"
+  name = "dilddream"
+  homepage = "https://dilddream.com"

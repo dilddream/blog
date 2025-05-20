@@ -50,7 +50,7 @@
     "typeface-fira-code": "^1.1.13",
     "typeface-roboto-slab": "^1.1.13"
   },
-  "description": "블로그",
+  "description": "몽중몽상",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "cssnano": "^7.0.6",
