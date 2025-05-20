@@ -1,4 +1,4 @@
-module github.com/dilddream/hugo-theme-gruvbox
+module github.com/dilddream/blog
 
 go 1.24.3
 
