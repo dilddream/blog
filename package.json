@@ -83,7 +83,7 @@
     "*.md": "markdownlint --fix"
   },
   "main": "index.js",
-  "name": "몽중몽상",
+  "name": "custom-blog-theme-from-gruvbox",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dilddream/blog.git"
