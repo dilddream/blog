@@ -99,8 +99,7 @@
   gap: 0.25rem; /* 버튼 사이 간격 */
 }
 
-.widget-page-btn:focus {
-  background-color: var(--bg2);
-  font-weight: bold;
+.widget-page-btn {
+  border: none;
   outline: none;
 }
