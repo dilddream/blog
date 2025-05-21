@@ -42,13 +42,9 @@
   list-style: none;
 }
 
-/* ── 리스트 항목(li) ───────────────────────────────────────── */
-/* li는 current 배경만 담당, padding은 a에 옮깁니다 */
-/* purgecss start ignore */
-.widget-post-item.current {
+.widget-post-list .widget-post-item.current {
   background-color: var(--bg2) !important;
 }
-/* purgecss end ignore */
 
 /* ── 링크(a) ───────────────────────────────────────────────── */
 /* a를 flex 컨테이너로 만들어 제목과 날짜를 양 끝 정렬 */
