@@ -59,7 +59,6 @@
   box-sizing: border-box;
 
   text-decoration: none;
-  color: var(--color-link);
 }
 
 /* 제목(span)에 flex:1을 줘서 남은 공간을 차지하게 */
@@ -69,7 +68,6 @@
 /* 날짜(time)는 자동으로 오른쪽 끝으로 밀리도록 */
 .widget-post-link time {
   font-size: 0.875rem;
-  color: var(--color-muted);
   white-space: nowrap;
 }
 

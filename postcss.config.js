@@ -31,7 +31,7 @@ module.exports = () => ({
               let els = JSON.parse(content).htmlElements;
               return els.tags.concat(els.classes, els.ids);
             },
-            safelist: ["data-theme"],
+            safelist: ["data-theme", "current"],
           }),
         ]
       : []),
