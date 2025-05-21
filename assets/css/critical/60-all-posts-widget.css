@@ -46,7 +46,7 @@
 /* li는 current 배경만 담당, padding은 a에 옮깁니다 */
 /* purgecss start ignore */
 .widget-post-item.current {
-  background-color: var(--bg2);
+  background-color: var(--bg2) !important;
 }
 /* purgecss end ignore */
 
