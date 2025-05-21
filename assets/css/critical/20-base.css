@@ -38,7 +38,7 @@
 }
 
 :root {
-  --font-monospace: "Fira Code", "Lucida Console", Monaco, monospace;
+  --font-monospace: "Fira Code", "Maruburi", Monaco, monospace;
   --font-sans-serif: Verdana, Helvetica, sans-serif;
   --font-serif: "Noto Serif KR", "Noto Sans KR", system-ui, sans-serif;
   --font-logo: "Sogang", "ChosunSm", "Noto Serif KR", system-ui;
@@ -251,7 +251,7 @@ code,
 kbd,
 pre,
 th {
-  font-family: var(--font-monospace);
+  font-family: var(--font-post-header);
 }
 
 code,
@@ -264,7 +264,24 @@ kbd {
 
 blockquote,
 pre {
+  margin: 0;
   padding: 1rem;
+}
+
+blockquote p {
+  text-align: right !important;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+blockquote img {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+blockquote:last-child {
+  margin-top: 10em;
 }
 
 pre {

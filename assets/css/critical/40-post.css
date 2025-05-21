@@ -1,14 +1,16 @@
 .post,
 .content-section {
-  border: 2px solid var(--color-border);
   padding: 2rem 1rem;
+  border: 2px solid var(--color-border);
 }
 
 .post {
   & figure,
   & img:not(figure img),
   & video:not(figure video) {
-    margin: 2rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid var(--color-border);
     box-sizing: border-box;
   }
 }
@@ -27,7 +29,10 @@
 
 .post-content {
   margin: 2rem 1rem;
-  font-size: 1.25rem;
+  font-weight: 500;
+  font-size: 15px;
+
+  line-height: 1.8;
 }
 
 .post-content__read-more {
@@ -44,6 +49,13 @@
   & a:hover {
     color: var(--primary);
   }
+}
+
+.post-content picture,
+.post-content picture img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .post-tags {
